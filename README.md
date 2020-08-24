@@ -12,17 +12,17 @@ Build an address book that uses constructors and prototypes.
   SPECS
 
   [x] - Build a basic constructor for an address book.
-        Input: Name, and Number
-        Output: [XYZ],[ABC] and 555-55-1212
-  [] - Add contact to address book
-	Input: first, last, phone
-	Output: contact[i] = firstName: [first], lastName: [last], phoneNumber: [phone]
-  [] - Find contact in address book
-	Input: find id in conacts
-	Output: contact[i] = ... contactId[id]
-  [] - Delete contact form address book
-	Input: find id and delete contact
-	Output: contact[i] = false
+          Input: Name, and Number
+          Output: [XYZ],[ABC] and 555-55-1212
+  [x] - Add contact to address book
+          Input: first, last, phone
+          Output: contact[i] = firstName: [first], lastName: [last], phoneNumber: [phone]
+  [x] - Find contact in address book
+          Input: find id in conacts
+          Output: contact[i] = ... contactId[id]
+  [x] - Delete contact form address book
+          Input: find id and delete contact
+          Output: contact[i] = false
 
 ## Setup/Installation Requirements
 
