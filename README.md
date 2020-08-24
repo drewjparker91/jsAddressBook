@@ -14,29 +14,32 @@ Build an address book that uses constructors and prototypes.
   [x] - Build a basic constructor for an address book.
         Input: Name, and Number
         Output: [XYZ],[ABC] and 555-55-1212
-
+  [] - Add contact to address book
+	Input: first, last, phone
+	Output: contact[i] = firstName: [first], lastName: [last], phoneNumber: [phone]
+  [] - Find contact in address book
+	Input: find id in conacts
+	Output: contact[i] = ... contactId[id]
+  [] - Delete contact form address book
+	Input: find id and delete contact
+	Output: contact[i] = false
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
-
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+* Download files
+* Load all files into one directory
+* Open index.html
+* Have fun playing around with the Address Book
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+none
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
 * HTML
 * CSS
   * Bootstrap
