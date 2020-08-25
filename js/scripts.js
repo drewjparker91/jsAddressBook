@@ -42,18 +42,24 @@ AddressBook.prototype.deleteContact = function(id) {
 // addressBook.updateContact(1, Ada, Lovelace, 555-666-1212)
 // addressBook.updateCOntact(1, property, info)
 
-AddressBook.prototype.updateContact = function(id, first, last, number) {
+AddressBook.prototype.updateContact = function(id, firstName, lastName, phoneNumber, email, address) {
   for (let i = 0; i < this.contacts.length; i++) {
     if (this.contacts[i]) {
       if (this.contacts[i].id == id) {
-        if (first != "") {
-          this.contacts[i].firstName = first;
+        if (firstName != "") {
+          this.contacts[i].firstName = firstName;
         }
-        if (last != "") {
-          this.contacts[i].lastName = last;
+        if (lastName != "") {
+          this.contacts[i].lastName = lastName;
         }
-        if (number != "") {
-          this.contacts[i].phoneNumber = number;
+        if (phoneNumber != "") {
+          this.contacts[i].phoneNumber = phoneNumber;
+        }
+        if (email != "") {
+          this.contacts[i].email = email;
+        }
+        if (address != "") {
+          this.contacts[i].address = address;
         }
         return true;
       }
@@ -63,10 +69,12 @@ AddressBook.prototype.updateContact = function(id, first, last, number) {
 }
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber) {
+function Contact(firstName, lastName, phoneNumber, email, address) {
   this.firstName = firstName,
   this.lastName = lastName,
-  this.phoneNumber = phoneNumber
+  this.phoneNumber = phoneNumber,  
+  this.email = email,
+  this.address = address
 }
 
 Contact.prototype.fullName = function() {
@@ -91,6 +99,8 @@ function showContact(contactId) {
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
+  $(".email-address").html(contact.email);
+  $(".home-address").html(contact.address);
   let buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -114,12 +124,16 @@ $(document).ready(function() {
     const inputtedFirstName = $("input#new-first-name").val();
     const inputtedLastName = $("input#new-last-name").val();
     const inputtedPhoneNumber = $("input#new-phone-number").val();
+    const inputtedEmail = $("input#new-email-address").val();
+    const inputtedAddress = $("input#new-home-address").val();
 
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
+    $("input#new-email-address").val("");
+    $("input#new-home-address").val("");
 
-    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmail, inputtedAddress);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   });
