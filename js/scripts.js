@@ -117,24 +117,55 @@ function attachContactListeners() {
   });
 };
 
+
+
 $(document).ready(function() {
   attachContactListeners();
-  $("form#new-contact").submit(function(event) {
+  $("#new-contact").submit(function(event) {
     event.preventDefault();
-    const inputtedFirstName = $("input#new-first-name").val();
-    const inputtedLastName = $("input#new-last-name").val();
-    const inputtedPhoneNumber = $("input#new-phone-number").val();
-    const inputtedEmail = $("input#new-email-address").val();
-    const inputtedAddress = $("input#new-home-address").val();
+    let contactArrayId = ["first-name", "last-name", "phone-number", "email-address1", "email-address2", "email-address3", "address1", "address2", "address3"]
+    let contactArray = [];
+    for (let i = 0; i < contactArrayId.length; i++) {
+      contactArray.push($("input#new-" + contactArrayId[i]).val());
+      $("input#new-" + contactArrayId[i]).val("");
+    }
+    alert(contactArray);
+    // const inputtedFirstName = $("input#new-first-name").val();
+    // const inputtedLastName = $("input#new-last-name").val();
+    // const inputtedPhoneNumber = $("input#new-phone-number").val();
+    // const inputtedEmail = $("input#new-email-address1").val();
+    // const inputtedAddress = $("input#new-address1").val();
 
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
-    $("input#new-phone-number").val("");
-    $("input#new-email-address").val("");
-    $("input#new-home-address").val("");
+    // $("input#new-first-name").val("");
+    // $("input#new-last-name").val("");
+    // $("input#new-phone-number").val("");
+    // $("input#new-email-address1").val("");
+    // $("input#new-address1").val("");
 
     let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmail, inputtedAddress);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   });
 });
+
+//
+
+// new-email-address1
+// email-type1
+// function addMore(type, number) {
+//   let id1;
+//   let id2;
+//   number++;
+//   alert("more");
+//   if (type === "email") {
+//     id1 = "new-email-address" + number;
+//     id2 = "email-type" + number;
+//   }
+//   if (type === "address") {
+//     id1 = "new-address" + number;
+//     id2 = "address-type" + number;
+//   }
+//   let result = "<div class=row><div class=ml-1><div class=col-8><input type=text class=form-control id=" + id1 + "><div class=col-3><select class=form-control id=" + id2 + "><option>Primary</option><option>Secondary</option><option>Work</option></select><button onClick=addMore(" + type + "," + number + ") class=btn-info>+</button></div></div></div></div><div id=" + type + number + "</div>";
+
+//   $("#" + type + number).html(result);
+// }
