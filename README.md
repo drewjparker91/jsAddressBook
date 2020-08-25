@@ -2,7 +2,7 @@
 
 #### _Objects in JavaScript Exersice for Epicodus, August 24th, 2020_
 
-#### By _**Mike Manchee and Sean Wilson**_
+#### By _**Mike Manchee, Drew Parker, and Sean Wilson**_
 
 ## Description
 
@@ -23,6 +23,10 @@ Build an address book that uses constructors and prototypes.
   [x] - Delete contact form address book
           Input: find id and delete contact
           Output: contact[i] = false
+  [x] - Update contact from address book
+          Input: find id and update contact - addressBook.updateContact(id, newFirst, newLast, newNumber)
+          Output: contact[i] = firstName: [newFirst], lastName: [newLast], phoneNumber: [newNumber]
+        
 
 ## Setup/Installation Requirements
 
@@ -51,5 +55,5 @@ none
 
 ### License
 
-Copyright (c) 2020 **_Mike Manchee and Sean Wilson_**
+Copyright (c) 2020 **_Mike Manchee, Sean Wilson, and Drew Parker_**
 Licenced under MIT
