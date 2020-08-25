@@ -69,12 +69,19 @@ AddressBook.prototype.updateContact = function(id, firstName, lastName, phoneNum
 }
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber, email, address) {
-  this.firstName = firstName,
-  this.lastName = lastName,
-  this.phoneNumber = phoneNumber,  
-  this.email = email,
-  this.address = address
+function Contact(array) {
+  // let addArray = [this.firstName, this.lastName, this.phoneNumber, this.email.email1, this.email.email2, this.email.email3, this.address.address1, this.address.address2, this.address.address3];
+  // for (let i = 0; i < array.lenght; i++) {
+  //   if(array[i] !== "") {
+  //     addArray[i] = array[i];
+  //   }
+  // }
+
+  this.firstName = array[0],
+  this.lastName = array[1],
+  this.phoneNumber = array[2],
+  this.email = { email1: array[3] , email2: array[4] , email3: array[5] };
+  this.address = { address1: array[6] , address2: array[7] , address3: array[8] }
 }
 
 Contact.prototype.fullName = function() {
@@ -99,8 +106,25 @@ function showContact(contactId) {
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
-  $(".email-address").html(contact.email);
-  $(".home-address").html(contact.address);
+  $(".email-address1").html(contact.email.email1);
+  if (contact.email.email2 !== "") {
+    $(".email-address2").html(contact.email.email2);
+    $("#second-email").toggle();
+  }
+  if (contact.email.email3 !== "") {
+    $(".email-address3").html(contact.email.email3);
+    $("#third-email").toggle();
+  }
+  $(".address1").html(contact.address.address1);
+  if (contact.address.address2 !== "") {
+    $(".address2").html(contact.address.address2);
+    $("#work-address").toggle();
+  } 
+  if (contact.address.address3 !== "") {
+    $(".address3").html(contact.address.address3);
+    $("#vacation-address").toggle();
+  }
+
   let buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" +  + contact.id + ">Delete</button>");
@@ -129,7 +153,6 @@ $(document).ready(function() {
       contactArray.push($("input#new-" + contactArrayId[i]).val());
       $("input#new-" + contactArrayId[i]).val("");
     }
-    alert(contactArray);
     // const inputtedFirstName = $("input#new-first-name").val();
     // const inputtedLastName = $("input#new-last-name").val();
     // const inputtedPhoneNumber = $("input#new-phone-number").val();
@@ -142,7 +165,7 @@ $(document).ready(function() {
     // $("input#new-email-address1").val("");
     // $("input#new-address1").val("");
 
-    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmail, inputtedAddress);
+    let newContact = new Contact(contactArray);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   });
