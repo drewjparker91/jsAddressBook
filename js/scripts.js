@@ -1,8 +1,8 @@
   
 // Business Logic for AddressBook ---------
 function AddressBook() {
-  this.contacts = []
-  this.currentId = 0;
+  this.contacts = [],
+  this.currentId = 0
 }
 
 AddressBook.prototype.addContact = function(contact) {
@@ -16,7 +16,7 @@ AddressBook.prototype.assignId = function() {
 }
 
 AddressBook.prototype.findContact = function(id) {
-  for (let i=0; i< this.contacts.length; i++) {
+  for (let i = 0; i < this.contacts.length; i++) {
     if (this.contacts[i]) {
       if (this.contacts[i].id == id) {
         return this.contacts[i];
@@ -27,7 +27,7 @@ AddressBook.prototype.findContact = function(id) {
 }
 
 AddressBook.prototype.deleteContact = function(id) {
-  for (let i=0; i< this.contacts.length; i++) {
+  for (let i = 0; i < this.contacts.length; i++) {
     if (this.contacts[i]) {
       if (this.contacts[i].id == id) {
         delete this.contacts[i];
@@ -55,9 +55,11 @@ AddressBook.prototype.updateContact = function(id, first, last, number) {
         if (number != "") {
           this.contacts[i].phoneNumber = number;
         }
+        return true;
       }
     }
-  }
+  };
+  return false;
 }
 
 // Business Logic for Contacts ---------
@@ -70,3 +72,18 @@ function Contact(firstName, lastName, phoneNumber) {
 Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
+
+// User Interface Logic ---------
+let addressBook = new AddressBook();
+
+$(document).ready(function() {
+  $("form#new-contact").submit(function(event) {
+    event.preventDefault();
+    const inputtedFirstName = $("input#new-first-name").val();
+    const inputtedLastName = $("input#new-last-name").val();
+    const inputtedPhoneNumber = $("input#new-phone-number").val();
+    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    addressBook.addContact(newContact);
+    console.log(addressBook.contacts);
+  });
+});
